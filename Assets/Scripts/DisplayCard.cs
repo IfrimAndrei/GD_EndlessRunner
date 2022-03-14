@@ -21,10 +21,15 @@ public class DisplayCard : MonoBehaviour
     public Text attack;
     public Text health;
     public Image artWork;
-
+    public bool isVisible = true;
+    public GameObject cardBack;
+    // public GameObject Hand;
+    // public int numberOfCardsInDeck;
+    // public static bool staticCardBack;
     void Start()
     {
         displayCard = new List<Card>(CardDatabase.cardList);
+        // numberOfCardsInDeck = PlayerDeck.deckSize; 
     }
     void Update()
     {
@@ -44,6 +49,15 @@ public class DisplayCard : MonoBehaviour
             attack.text = "" ;
             health.text = "" ;
         }
-
+        cardBack.SetActive(isVisible);
+        // Hand = GameObject.Find("Hand");
+        // if (this.transform.parent == Hand.transform.parent) {
+        //     isVisible = true;
+        // }
+        // if(this.tag == "Clone") {
+        //     displayCard[0] = PlayerDeck.staticDeck[numberOfCardsInDeck - 1];
+        //     numberOfCardsInDeck -=1;
+        //     PlayerDeck.deckSize -=1;
+        // }
     }
 }

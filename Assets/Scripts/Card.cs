@@ -25,4 +25,7 @@ public abstract class Card //: ScriptableObject
         description=Description;
         image = Image;
     }
+    public string toString() {
+        return "id: " + id + " cardName: " + cardName + " cost: " + cost + " description: " + description;
+    }
 }
