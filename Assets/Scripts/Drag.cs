@@ -6,11 +6,12 @@ using UnityEngine.EventSystems;
 public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     Transform parentToReturnTo = null;
+    public GameObject minionField;
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        minionField = GameObject.Find("PlayerMinionField");
         parentToReturnTo = this.transform.parent;
-        this.transform.SetParent(this.transform.parent.parent);
         //GetComponent < CanvasGroup > ().blockRaycast = false;
         Debug.Log("BeginDrag");
     }
@@ -23,7 +24,8 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        this.transform.SetParent(parentToReturnTo);
+        this.transform.SetParent(minionField.transform);
+        
         //GetComponent < CanvasGroup > ().blockRaycast = true;
         Debug.Log("EndDrag");
     }

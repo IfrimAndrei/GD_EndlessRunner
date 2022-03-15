@@ -65,10 +65,13 @@ public class PlayerDeck : MonoBehaviour
     // }
     IEnumerator StartGame()
     {
+        /*
         for(int i=0; i<=4; i++) {
-            yield return new WaitForSeconds(1);
+            
             Instantiate(CardToHand, transform.position, transform.rotation);
         }
+        */
+        yield return new WaitForSeconds(1);
     }
     /*
     public void Shuffle()
