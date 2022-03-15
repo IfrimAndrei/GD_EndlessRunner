@@ -5,24 +5,28 @@ using UnityEngine;
 public class PlayerDeck : MonoBehaviour
 {
     public List<Card> deck = new List<Card>();
-    // public static List<Card> staticDeck = new List<Card>();
-    public int deckSize = 30;
+    public static List<Card> staticDeck = new List<Card>();
+    public static int deckSize;
     public GameObject deckCard1;
     public GameObject deckCard2;
     public GameObject deckCard3;
     public GameObject deckCard4;
-    // public GameObject[] Clones;
-    // public GameObject Hand;
-    // Start is called before the first frame update
+
+    public GameObject[] Clones;
+    public GameObject Hand;
+    public GameObject CardToHand;
+
+    //Start is called before the first frame update
     void Start()
     {
+        deckSize = 30;
         int maxRandom = CardDatabase.cardList.Count;
         for (int index = 0; index < deckSize; index++)
         {
             int randomIndex = Random.Range(0, maxRandom);
             deck.Add(CardDatabase.cardList[randomIndex]);
         }
-        // StartCoroutine(StartGame());
+        StartCoroutine(StartGame());
     }
     // for debugging
     private void PrintDeck()
@@ -35,7 +39,7 @@ public class PlayerDeck : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   
-        // staticDeck = deck; 
+        staticDeck = deck; 
         if (deckSize < 20)
             deckCard1.SetActive(false);
         if (deckSize < 10)
@@ -52,12 +56,13 @@ public class PlayerDeck : MonoBehaviour
     //         Destroy(Clone);
     //     }
     // }
-    // IEnumerator StartGame() {
-    //     for(int i=0; i<=4; i++) {
-    //         yield return new WaitForSeconds(1);
-    //         Instantiate(CardToHand, transform.position, transform.rotation);
-    //     }
-    // }
+    IEnumerator StartGame()
+    {
+        for(int i=0; i<=4; i++) {
+            yield return new WaitForSeconds(1);
+            Instantiate(CardToHand, transform.position, transform.rotation);
+        }
+    }
     public void Shuffle()
     {
         // PrintDeck();

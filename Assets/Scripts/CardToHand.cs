@@ -5,7 +5,7 @@ using UnityEngine;
 public class CardToHand : MonoBehaviour
 {
     public GameObject Hand;
-    public GameObject It;
+    public GameObject HandCard;
     void Start()
     {
         
@@ -14,10 +14,10 @@ public class CardToHand : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Hand = GameObject.Find("Hand");
-        // It.transform.SetParent(Hand.transform);
-        // It.transform.localScale = Vector3.one;
-        // It.transform.position = new Vector3(transform.position.x, transform.position.y, -48);
-        // It.transform.eulerAngles = new Vector3(25, 0, 0);
+        Hand = GameObject.Find("Hand");
+        HandCard.transform.SetParent(Hand.transform);
+        HandCard.transform.localScale = Vector3.one;
+        HandCard.transform.position = new Vector3(transform.position.x, transform.position.y, -48);
+        HandCard.transform.eulerAngles = new Vector3(25, 0, 0);
     }
 }
