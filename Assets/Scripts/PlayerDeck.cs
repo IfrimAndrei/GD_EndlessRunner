@@ -26,6 +26,7 @@ public class PlayerDeck : MonoBehaviour
             int randomIndex = Random.Range(0, maxRandom);
             deck.Add(CardDatabase.cardList[randomIndex]);
         }
+        
         StartCoroutine(StartGame());
     }
     // for debugging
@@ -48,6 +49,12 @@ public class PlayerDeck : MonoBehaviour
             deckCard3.SetActive(false);
         if (deckSize < 1)
             deckCard4.SetActive(false);
+
+        if (TurnSystem.startTurn == true)
+        {
+            StartCoroutine(Draw(1));
+            TurnSystem.startTurn = false;
+        }
     }
     // IEnumerator Example() {
     //     yield return new WaitForSeconds(1);
@@ -63,6 +70,7 @@ public class PlayerDeck : MonoBehaviour
             Instantiate(CardToHand, transform.position, transform.rotation);
         }
     }
+    /*
     public void Shuffle()
     {
         // PrintDeck();
@@ -75,5 +83,15 @@ public class PlayerDeck : MonoBehaviour
         }
         // PrintDeck();
 
+    }
+    */
+
+    IEnumerator Draw(int x)
+    {
+        for (int i = 0; i < x; i++)
+        {
+            yield return new WaitForSeconds(1);
+            Instantiate(CardToHand, transform.position, transform.rotation);
+        }
     }
 }

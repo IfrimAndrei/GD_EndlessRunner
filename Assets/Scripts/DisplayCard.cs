@@ -33,11 +33,13 @@ public class DisplayCard : MonoBehaviour
     void Start()
     {
         displayCard = new List<Card>(CardDatabase.cardList);
-        numberOfCardsInDeck = PlayerDeck.deckSize; 
+        numberOfCardsInDeck = PlayerDeck.deckSize;
+
+        
     }
     void Update()
     {
-        
+
         nameText.text = "" + displayCard[displayId].cardName;
         costText.text = "" + displayCard[displayId].cost;
         descriptionText.text = "" + displayCard[displayId].description;
@@ -50,12 +52,11 @@ public class DisplayCard : MonoBehaviour
         }
         else
         {
-            attack.text = "" ;
-            health.text = "" ;
+            attack.text = "";
+            health.text = "";
         }
         cardBack.SetActive(cardBackOn);
 
-    
         Hand = GameObject.Find("Hand");
         if (this.transform.parent == Hand.transform.parent) {
              cardBackOn = true;
