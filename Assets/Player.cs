@@ -24,9 +24,14 @@ public class Player : MonoBehaviour {
 		transform.position = mousePosition;
 	}
 
-	void OnCollisionEnter2D ()
+	void OnCollisionEnter2D (Collision2D col)
 	{
-		FindObjectOfType<GameManager>().EndGame();
+		Debug.Log(col.gameObject.tag);
+		int x;
+		if (col.gameObject.tag == "Red")
+			x = 1;
+		else
+			FindObjectOfType<GameManager>().EndGame();
 	}
 
 }

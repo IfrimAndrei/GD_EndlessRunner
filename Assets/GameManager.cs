@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour {
         float sloweDeltaT= Time.fixedDeltaTime / slowness;
 		float normalDeltaT = Time.fixedDeltaTime;
 	}
+
     private void Update()
 	{    //Sunt prea bun ca si programator
 		if (Input.GetMouseButtonDown(0))
