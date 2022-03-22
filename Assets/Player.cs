@@ -26,10 +26,8 @@ public class Player : MonoBehaviour {
 
 	void OnCollisionEnter2D (Collision2D col)
 	{
-		Debug.Log(col.gameObject.tag);
-		int x;
 		if (col.gameObject.tag == "Red")
-			x = 1;
+			Destroy(col.gameObject);
 		else
 			FindObjectOfType<GameManager>().EndGame();
 	}
