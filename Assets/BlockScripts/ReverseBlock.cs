@@ -5,12 +5,13 @@ public class ReverseBlock : MonoBehaviour {
 
 	void Start ()
 	{
-		GetComponent<Rigidbody2D>().gravityScale -= Time.timeSinceLevelLoad / 100f;
+		int x=Random.Range(2, 8);
+		GetComponent<Rigidbody2D>().gravityScale -= Time.timeSinceLevelLoad / (x*10f);
 	}
 
 	// Update is called once per frame
 	void Update () {
-		if (transform.position.y > 5.5f || transform.position.y < -10f)
+		if (transform.position.y > 15f || transform.position.y < -20f)
 		{
 			Destroy(gameObject);
 		}

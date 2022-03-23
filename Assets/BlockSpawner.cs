@@ -46,22 +46,28 @@ public class BlockSpawner : MonoBehaviour {
 		for (int i = 0; i < spawnPoints.Length; i++)
 		{
 
-			if (randomIndex.Contains(i)==false)
+			if (randomIndex.Contains(i) == false)
 			{
-					Instantiate(blockPrefab, spawnPoints[i].position, Quaternion.identity);
+				float w = Random.Range(-50, 50) / 10;
+				Vector3 x = spawnPoints[i].position + Vector3.up * w;
+				Instantiate(blockPrefab, x, Quaternion.identity);
 			}
 			else
-            {
+			{
+				Debug.Log("da");
 				if (isPowerUpWave)
 				{
+					Debug.Log("da2");
 					Instantiate(cherry, spawnPoints[i].position, Quaternion.identity);
 					isPowerUpWave = false;
 				}
 				//else if (waveCounter>10)
 				//		Instantiate(inverseBlockPrefab, reverseSpawnPoints[i].position, Quaternion.identity);
 				else if (waveCounter > 4)
-					if(Random.Range(1,11-(waveCounter-5)/2)==1 || waveCounter >= 22)
+					if (Random.Range(1, 11 - (waveCounter - 5) / 2) == 1 || waveCounter >= 22)
+					{
 						Instantiate(inverseBlockPrefab, reverseSpawnPoints[i].position, Quaternion.identity);
+					}
 			}
 		}
 		

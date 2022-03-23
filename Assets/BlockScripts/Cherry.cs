@@ -1,16 +1,17 @@
 using UnityEngine;
 using System.Collections;
 
-public class Cherry : MonoBehaviour {
+public class Golden : MonoBehaviour {
 
 	void Start ()
 	{
-		GetComponent<Rigidbody2D>().gravityScale += Time.timeSinceLevelLoad / 60f;
+		int x = Random.Range(6, 8);
+		GetComponent<Rigidbody2D>().gravityScale += Time.timeSinceLevelLoad * (x*10f);
 	}
 
 	// Update is called once per frame
 	void Update () {
-		if (transform.position.y > 10f || transform.position.y < -5.5f)
+		if (transform.position.y > 20f || transform.position.y < -15f)
 		{
 			Destroy(gameObject);
 		}

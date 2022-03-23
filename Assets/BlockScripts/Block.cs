@@ -5,12 +5,13 @@ public class Block : MonoBehaviour {
 
 	void Start ()
 	{
-		GetComponent<Rigidbody2D>().gravityScale += Time.timeSinceLevelLoad / 100f;
+		int x = Random.Range(2, 8);
+		GetComponent<Rigidbody2D>().gravityScale += Time.timeSinceLevelLoad / (x * 10f);
 	}
 
 	// Update is called once per frame
 	void Update () {
-		if (transform.position.y > 10f || transform.position.y < -5.5f)
+		if (transform.position.y > 20f || transform.position.y < -15f)
 		{
 			Destroy(gameObject);
 		}
