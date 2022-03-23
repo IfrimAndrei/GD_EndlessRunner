@@ -54,6 +54,8 @@ public class GameManager : MonoBehaviour {
 			Time.fixedDeltaTime = sloweDeltaT;
 
 			yield return new WaitForSeconds(1f / slowness);
+			Time.timeScale = 1f;
+			Time.fixedDeltaTime = normalDeltaT;
 
 		}
         else
