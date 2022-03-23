@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 212000011437741028}
   - component: {fileID: 50000011206490344}
   - component: {fileID: 61000012136095630}
-  - component: {fileID: 114000012361598242}
+  - component: {fileID: -5266916329272015146}
   m_Layer: 0
-  m_Name: PowerUp
+  m_Name: Cherry
   m_TagString: Red
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 1000013023180490}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 6.1314, z: 0}
-  m_LocalScale: {x: 5, y: 2.985958, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -100,7 +100,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0.15
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -132,7 +132,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.16, y: 0.16}
   m_EdgeRadius: 0
---- !u!114 &114000012361598242
+--- !u!114 &-5266916329272015146
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -141,6 +141,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 1000013023180490}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a34f2710ae9c9fa4f982bd04216df869, type: 3}
+  m_Script: {fileID: 11500000, guid: 5a4430d0b1c49e8479c6c85fa33eebbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

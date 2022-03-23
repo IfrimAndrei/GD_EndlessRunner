@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour {
 
 	public static float slowness = 10f;
+	public static int cherry = 3;
+	float sloweDeltaT;
+	float normalDeltaT;
 	public void EndGame ()
 	{
 		StartCoroutine(RestartLevel());
@@ -12,18 +15,20 @@ public class GameManager : MonoBehaviour {
 	}
     public void Start()
     {
-        float sloweDeltaT= Time.fixedDeltaTime / slowness;
-		float normalDeltaT = Time.fixedDeltaTime;
+		sloweDeltaT= Time.fixedDeltaTime / slowness;
+		normalDeltaT = Time.fixedDeltaTime;
 	}
 
     private void Update()
-	{    //Sunt prea bun ca si programator
-		if (Input.GetMouseButtonDown(0))
+	{
+		if(cherry>0)
+			if (Input.GetMouseButtonDown(0))
+			{
+				StartCoroutine(SlowMotion(true));
+				cherry--;
+			}
+		if (Input.GetMouseButtonUp(0))
 		{
-			StartCoroutine(SlowMotion(true));
-		}
-        if (Input.GetMouseButtonUp(0))
-        {
 			StartCoroutine(SlowMotion(false));
 		}
 
@@ -31,12 +36,13 @@ public class GameManager : MonoBehaviour {
 	IEnumerator RestartLevel ()
 	{
 		Time.timeScale = 1f / slowness;
-		Time.fixedDeltaTime = Time.fixedDeltaTime / slowness;
+		Time.fixedDeltaTime = sloweDeltaT;
 
 		yield return new WaitForSeconds(1f / slowness);
-
+		BlockSpawner.waveCounter = 0;
+		cherry = 3;
 		Time.timeScale = 1f;
-		Time.fixedDeltaTime = Time.fixedDeltaTime * slowness;
+		Time.fixedDeltaTime = normalDeltaT;
 
 		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 	}
@@ -45,7 +51,7 @@ public class GameManager : MonoBehaviour {
 		if (slowOn)
 		{
 			Time.timeScale = 1f / slowness;
-			Time.fixedDeltaTime = Time.fixedDeltaTime / slowness;
+			Time.fixedDeltaTime = sloweDeltaT;
 
 			yield return new WaitForSeconds(1f / slowness);
 
@@ -53,7 +59,7 @@ public class GameManager : MonoBehaviour {
         else
         {
 			Time.timeScale = 1f;
-			Time.fixedDeltaTime = Time.fixedDeltaTime * slowness;
+			Time.fixedDeltaTime = normalDeltaT;
 		}
 	}
 

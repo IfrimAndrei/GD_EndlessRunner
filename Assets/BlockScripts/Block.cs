@@ -5,12 +5,12 @@ public class Block : MonoBehaviour {
 
 	void Start ()
 	{
-		GetComponent<Rigidbody2D>().gravityScale += Time.timeSinceLevelLoad / 20f;
+		GetComponent<Rigidbody2D>().gravityScale += Time.timeSinceLevelLoad / 100f;
 	}
 
 	// Update is called once per frame
 	void Update () {
-		if (transform.position.y < -5f || transform.position.y>11f)
+		if (transform.position.y > 10f || transform.position.y < -5.5f)
 		{
 			Destroy(gameObject);
 		}

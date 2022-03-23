@@ -1,41 +1,69 @@
 using UnityEngine;
+using System.Linq;
 
 public class BlockSpawner : MonoBehaviour {
 
 	public Transform[] spawnPoints;
+	public Transform[] reverseSpawnPoints;
+	public Transform[] cherrySpawnPoints;
 
 	public GameObject blockPrefab;
-	public GameObject powerUpBlock;
-
+	public GameObject inverseBlockPrefab;
+	public GameObject cherry;
+	//public GameObject powerUpBlock;
+	
 	public float timeBetweenWaves = 1f;
 
 	private float timeToSpawn = 2f;
-	private int waveCounter = 0;
+	public static int waveCounter = 0;
+	bool isPowerUpWave;
 	void Update () {
 
 		if (Time.time >= timeToSpawn)
 		{
-			bool isPowerUpWave = waveCounter % 10 == 0 ? true : false;
-			SpawnBlocks(isPowerUpWave);
+			isPowerUpWave = waveCounter % 4==0;
+			SpawnBlocks();	
 			timeToSpawn = Time.time + timeBetweenWaves;
 			waveCounter++;
 		}
 	}
 	
 
-	void SpawnBlocks (bool isPowerUpWave)
+	public void SpawnBlocks ()
 	{
-		int randomIndex = Random.Range(0, spawnPoints.Length);
+		int aux;
+		int randomIndexSize = Random.Range(1, spawnPoints.Length);
+		int[] randomIndex = new int[randomIndexSize];
+
+		for (int i = 0; i < randomIndexSize; i++) 
+		{
+			aux = Random.Range(1, spawnPoints.Length);
+			while(randomIndex.Contains(aux))
+				aux = Random.Range(1, spawnPoints.Length);
+			randomIndex[i] = aux;
+		}
 
 		for (int i = 0; i < spawnPoints.Length; i++)
 		{
-			if (randomIndex != i)
+
+			if (randomIndex.Contains(i)==false)
 			{
-				Instantiate(blockPrefab, spawnPoints[i].position, Quaternion.identity);
+					Instantiate(blockPrefab, spawnPoints[i].position, Quaternion.identity);
+			}
+			else
+            {
+				if (isPowerUpWave)
+				{
+					Instantiate(cherry, spawnPoints[i].position, Quaternion.identity);
+					isPowerUpWave = false;
+				}
+				//else if (waveCounter>10)
+				//		Instantiate(inverseBlockPrefab, reverseSpawnPoints[i].position, Quaternion.identity);
+				else if (waveCounter > 4)
+					if(Random.Range(1,11-(waveCounter-5)/2)==1 || waveCounter >= 22)
+						Instantiate(inverseBlockPrefab, reverseSpawnPoints[i].position, Quaternion.identity);
 			}
 		}
-		if (isPowerUpWave) {
-				Instantiate(powerUpBlock, spawnPoints[randomIndex].position, Quaternion.identity);
-			}
+		
 	}
 }
