@@ -6,7 +6,6 @@ public class Player : MonoBehaviour {
 
 	public float speed = 15f;
 	public float mapWidth = 5f;
-
 	public Texture2D cursorTexture;
 
 
@@ -31,8 +30,17 @@ public class Player : MonoBehaviour {
 			GameManager.cherry++;
 			Destroy(col.gameObject);
 		}
+		else if ((col.gameObject.tag == "White" && this.tag== "P_White") ||
+			(col.gameObject.tag == "Black" && this.tag == "P_Black"))
+		{
+			//Physics2D.IgnoreCollision(col.collider, this.gameObject.GetComponent<Collider2D>());
+			col.rigidbody.gravityScale *= -1;
+		}
 		else
-			FindObjectOfType<GameManager>().EndGame();
+		{
+			   FindObjectOfType<GameManager>().EndGame();
+		}
+			
 	}
 
 }

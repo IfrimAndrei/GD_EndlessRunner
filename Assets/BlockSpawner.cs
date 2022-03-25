@@ -54,17 +54,17 @@ public class BlockSpawner : MonoBehaviour {
 			}
 			else
 			{
-				Debug.Log("da");
+				
 				if (isPowerUpWave)
 				{
-					Debug.Log("da2");
+					
 					Instantiate(cherry, spawnPoints[i].position, Quaternion.identity);
 					isPowerUpWave = false;
 				}
 				//else if (waveCounter>10)
 				//		Instantiate(inverseBlockPrefab, reverseSpawnPoints[i].position, Quaternion.identity);
-				else if (waveCounter > 4)
-					if (Random.Range(1, 11 - (waveCounter - 5) / 2) == 1 || waveCounter >= 22)
+				else if (waveCounter > 2)
+					if (Random.Range(1, 4 - waveCounter / 2) == 1 || 8 >= 22)
 					{
 						Instantiate(inverseBlockPrefab, reverseSpawnPoints[i].position, Quaternion.identity);
 					}

@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour {
 	public static int cherry = 3;
 	float sloweDeltaT;
 	float normalDeltaT;
+	public GameObject player;
 	public void EndGame ()
 	{
 		StartCoroutine(RestartLevel());
@@ -31,7 +32,22 @@ public class GameManager : MonoBehaviour {
 		{
 			StartCoroutine(SlowMotion(false));
 		}
-
+		
+		if (Input.GetMouseButtonDown(1))
+		{
+			if (player.tag == "P_White")
+			{
+				var playerRender = player.GetComponent<Renderer>();
+				playerRender.material.SetColor("_Color", Color.black);
+				player.tag = "P_Black";
+			}
+			else if (player.tag == "P_Black")
+			{
+				var playerRender = player.GetComponent<Renderer>();
+				playerRender.material.SetColor("_Color", Color.white);
+				player.tag = "P_White";
+			}
+		}
 	}
 	IEnumerator RestartLevel ()
 	{

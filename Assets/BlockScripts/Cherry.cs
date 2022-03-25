@@ -1,12 +1,12 @@
 using UnityEngine;
 using System.Collections;
 
-public class Golden : MonoBehaviour {
+public class Cherry : MonoBehaviour {
 
 	void Start ()
 	{
 		int x = Random.Range(6, 8);
-		GetComponent<Rigidbody2D>().gravityScale += Time.timeSinceLevelLoad * (x*10f);
+		GetComponent<Rigidbody2D>().gravityScale += Time.timeSinceLevelLoad / (x*10f);
 	}
 
 	// Update is called once per frame

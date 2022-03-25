@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Red
   - Golden
+  - White
+  - Black
+  - P_White
+  - P_Black
   layers:
   - Default
   - TransparentFX
