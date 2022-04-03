@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 61000012136095630}
   - component: {fileID: 114000012361598242}
   m_Layer: 0
-  m_Name: Circle
+  m_Name: Score
   m_TagString: Score
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -139,7 +139,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1000013023180490}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a34f2710ae9c9fa4f982bd04216df869, type: 3}
   m_Name: 

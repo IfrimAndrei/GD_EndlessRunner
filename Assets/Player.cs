@@ -4,10 +4,10 @@ using System;
 
 public class Player : MonoBehaviour {
 
-	public float speed = 15f;
+	// public float speed = 15f;
 	public float mapWidth = 5f;
 	public Texture2D cursorTexture;
-
+	// public float speed = 0.5f;
 
 	void Start ()
 	{
@@ -24,7 +24,7 @@ public class Player : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D (Collision2D col)
-	{
+	{	
 		if (col.gameObject.tag == "Red")
 		{
 			GameManager.cherry++;
@@ -39,6 +39,13 @@ public class Player : MonoBehaviour {
 		else if(col.gameObject.tag == "Score") {
 			Destroy(col.gameObject);
 			UI.updateScore();
+		}
+		else if(col.gameObject.tag == "Slow") {
+			//slow
+		}
+		else if(col.gameObject.tag == "ResetBoost") {
+			//reset boost
+			GameManager.cherry = 0;
 		}
 		else
 		{

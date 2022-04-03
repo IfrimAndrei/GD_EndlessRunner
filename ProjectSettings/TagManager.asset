@@ -11,6 +11,8 @@ TagManager:
   - P_White
   - P_Black
   - Score
+  - Slow
+  - ResetBoost
   layers:
   - Default
   - TransparentFX

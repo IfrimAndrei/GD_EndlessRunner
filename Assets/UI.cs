@@ -21,4 +21,7 @@ public class UI : MonoBehaviour
     public static void updateScore() {
         score++;
     }
+    public static void resetScore() {
+        score = 0;
+    }
 }

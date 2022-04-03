@@ -61,6 +61,7 @@ public class GameManager : MonoBehaviour {
 		Time.fixedDeltaTime = normalDeltaT;
 
 		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+		UI.resetScore();
 	}
 	IEnumerator SlowMotion(bool slowOn)
     {
