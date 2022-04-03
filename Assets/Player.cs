@@ -36,6 +36,10 @@ public class Player : MonoBehaviour {
 			//Physics2D.IgnoreCollision(col.collider, this.gameObject.GetComponent<Collider2D>());
 			col.rigidbody.gravityScale *= -1;
 		}
+		else if(col.gameObject.tag == "Score") {
+			Destroy(col.gameObject);
+			UI.updateScore();
+		}
 		else
 		{
 			   FindObjectOfType<GameManager>().EndGame();

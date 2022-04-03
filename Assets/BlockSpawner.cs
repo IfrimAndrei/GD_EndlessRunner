@@ -10,6 +10,7 @@ public class BlockSpawner : MonoBehaviour {
 	public GameObject blockPrefab;
 	public GameObject inverseBlockPrefab;
 	public GameObject cherry;
+	public GameObject circlePrefab;
 	//public GameObject powerUpBlock;
 	
 	public float timeBetweenWaves = 1f;
@@ -25,6 +26,8 @@ public class BlockSpawner : MonoBehaviour {
 			SpawnBlocks();	
 			timeToSpawn = Time.time + timeBetweenWaves;
 			waveCounter++;
+			UI.score++;
+
 		}
 	}
 	
@@ -59,6 +62,7 @@ public class BlockSpawner : MonoBehaviour {
 				{
 					
 					Instantiate(cherry, spawnPoints[i].position, Quaternion.identity);
+					Instantiate(circlePrefab, spawnPoints[i].position, Quaternion.identity);
 					isPowerUpWave = false;
 				}
 				else if (waveCounter > 2)
