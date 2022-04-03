@@ -10,6 +10,7 @@ TagManager:
   - Black
   - P_White
   - P_Black
+  - Score
   layers:
   - Default
   - TransparentFX
