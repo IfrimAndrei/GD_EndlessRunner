@@ -41,14 +41,16 @@ public class Player : MonoBehaviour {
 			UI.updateScore();
 		}
 		else if(col.gameObject.tag == "Slow") {
-			//slow
+			Destroy(col.gameObject);
+
 		}
 		else if(col.gameObject.tag == "ResetBoost") {
-			//reset boost
+			Destroy(col.gameObject);
 			GameManager.cherry = 0;
 		}
 		else
 		{
+			   Debug.Log(col.gameObject.tag);
 			   FindObjectOfType<GameManager>().EndGame();
 		}
 			

@@ -7,15 +7,11 @@ public class BlockSpawner : MonoBehaviour {
 	public Transform[] reverseSpawnPoints;
 	public Transform[] cherrySpawnPoints;
 
-	public GameObject blockPrefab;
-	public GameObject inverseBlockPrefab;
 	public GameObject cherry;
 	public GameObject circlePrefab;
-	public GameObject slowBlockPrefab;
-	public GameObject resetBoostPrefab;
-	//public GameObject powerUpBlock;
-	private GameObject[] blocksList;
-	
+
+	public GameObject[] shapes;
+	public GameObject[] reverseShapes;
 	public float timeBetweenWaves = 1f;
 
 	private float timeToSpawn = 2f;
@@ -23,7 +19,6 @@ public class BlockSpawner : MonoBehaviour {
 	bool isPowerUpWave;
 	bool isScoreWave;
 	void Start() {
-		blocksList = new GameObject[] {blockPrefab, slowBlockPrefab, resetBoostPrefab};
 	}
 
 	void Update () {
@@ -46,7 +41,8 @@ public class BlockSpawner : MonoBehaviour {
 		int aux;
 		int randomIndexSize = Random.Range(1, spawnPoints.Length);
 		int[] randomIndex = new int[randomIndexSize];
-
+		int randomShapeIndex = Random.Range(0, shapes.Length);
+		GameObject shapeToSpawn = shapes[randomShapeIndex]; 
 		for (int i = 0; i < randomIndexSize; i++) 
 		{
 			aux = Random.Range(1, spawnPoints.Length);
@@ -62,8 +58,7 @@ public class BlockSpawner : MonoBehaviour {
 			{
 				float w = Random.Range(-50, 50) / 10;
 				Vector3 x = spawnPoints[i].position + Vector3.up * w;
-				int randomBlockIndex = Random.Range(0, blocksList.Length);
-				Instantiate(blocksList[randomBlockIndex], x, Quaternion.identity);
+				Instantiate(shapeToSpawn, x, Quaternion.identity);
 			}
 			else
 			{
@@ -79,7 +74,7 @@ public class BlockSpawner : MonoBehaviour {
 				else if (waveCounter > 2)
 					if (Random.Range(1, 4 - waveCounter / 2) == 1 || waveCounter >= 8)
 					{
-						Instantiate(inverseBlockPrefab, reverseSpawnPoints[i].position, Quaternion.identity);
+						Instantiate(reverseShapes[randomShapeIndex], reverseSpawnPoints[i].position, Quaternion.identity);
 					}
 			}
 		}

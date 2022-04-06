@@ -13,6 +13,7 @@ TagManager:
   - Score
   - Slow
   - ResetBoost
+  - Gray
   layers:
   - Default
   - TransparentFX

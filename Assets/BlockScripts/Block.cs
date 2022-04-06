@@ -3,17 +3,25 @@ using System.Collections;
 
 public class Block : MonoBehaviour
 {
+	private Color grayColor = new Color(0.31f, 0.31f, 0.31f, 1);
+
     void Start()
     {
 
         int x = Random.Range(2, 8);
         GetComponent<Rigidbody2D>().gravityScale += Time.timeSinceLevelLoad / (x * 10f);
-        int y = Random.Range(0, 2);
+        int y = Random.Range(0, 3);
         if (y == 1)
         {
             this.tag = "White";
             var thisRender = this.GetComponent<SpriteRenderer>();
-            thisRender.color = new Color(255, 255, 255, 1);
+            thisRender.color = new Color(1, 1, 1, 1);
+        }
+        if (y == 2)
+        {
+            this.tag = "Gray";
+            var thisRender = this.GetComponent<SpriteRenderer>();
+            thisRender.color = grayColor;
         }
     }
 
@@ -26,10 +34,19 @@ public class Block : MonoBehaviour
         }
     }
     void OnCollisionEnter2D(Collision2D col)
-    {	string tag = col.gameObject.tag;
-		if(tag != "Score" && tag!="Slow" && tag!="ResetBoost")
+    {
+        string tag = col.gameObject.tag;
+        if (this.tag == "Gray" && ((col.gameObject.tag == "White") || (col.gameObject.tag == "Black")))
         {
-            if (tag== "White")
+            var thisRender = col.gameObject.GetComponent<SpriteRenderer>();
+            thisRender.color = grayColor;
+
+            col.rigidbody.gravityScale *= -1;
+            col.gameObject.tag = "Gray";
+        }
+        if (this.tag!= "Gray" && tag != "Score" && tag != "Slow" && tag != "ResetBoost")
+        {
+            if (tag == "White")
             {
                 //var thisRender = this.GetComponent<SpriteRenderer>();
                 //thisRender.color = new Color(0, 0, 0, 1);
