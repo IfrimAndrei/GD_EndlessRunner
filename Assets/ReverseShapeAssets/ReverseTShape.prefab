@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 2336991418322804323}
   - component: {fileID: -7290840686104812334}
   - component: {fileID: 2166682099853551556}
-  - component: {fileID: -373941024732847080}
   - component: {fileID: -3524713419349421758}
+  - component: {fileID: -4877490341849332799}
   m_Layer: 0
   m_Name: ReverseTShape
   m_TagString: White
@@ -88,18 +88,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &-373941024732847080
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2541991215693041354}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a34f2710ae9c9fa4f982bd04216df869, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &-3524713419349421758
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -151,3 +139,15 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-4877490341849332799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2541991215693041354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3842f2f7fa494d44bc7f35bd205697d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

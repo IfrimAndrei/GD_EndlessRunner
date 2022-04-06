@@ -8,7 +8,7 @@ public class Block : MonoBehaviour
     void Start()
     {
 
-        int x = Random.Range(2, 8);
+        int x = Random.Range(4, 8);
         GetComponent<Rigidbody2D>().gravityScale += Time.timeSinceLevelLoad / (x * 10f);
         int y = Random.Range(0, 3);
         if (y == 1)
@@ -41,7 +41,7 @@ public class Block : MonoBehaviour
             var thisRender = col.gameObject.GetComponent<SpriteRenderer>();
             thisRender.color = grayColor;
 
-            col.rigidbody.gravityScale *= -1;
+            col.rigidbody.gravityScale *= -0.5f;
             col.gameObject.tag = "Gray";
         }
         if (this.tag!= "Gray" && tag != "Score" && tag != "Slow" && tag != "ResetBoost")
@@ -54,7 +54,7 @@ public class Block : MonoBehaviour
 
                 var thisRender = col.gameObject.GetComponent<SpriteRenderer>();
                 thisRender.color = new Color(0, 0, 0, 1);
-                col.rigidbody.gravityScale *= -1;
+                col.rigidbody.gravityScale *= -0.5f;
                 col.gameObject.tag = "Black";
             }
             else if (tag == "Black")
@@ -65,7 +65,7 @@ public class Block : MonoBehaviour
 
                 var thisRender = col.gameObject.GetComponent<SpriteRenderer>();
                 thisRender.color = new Color(255, 255, 255, 1);
-                col.rigidbody.gravityScale *= -1;
+                col.rigidbody.gravityScale *= -0.5f;
                 col.gameObject.tag = "White";
             }
         }

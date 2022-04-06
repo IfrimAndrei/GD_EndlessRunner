@@ -46,7 +46,10 @@ public class Player : MonoBehaviour {
 		}
 		else if(col.gameObject.tag == "ResetBoost") {
 			Destroy(col.gameObject);
-			GameManager.cherry = 0;
+			if (GameManager.cherry <= 3)
+				GameManager.cherry = 0;
+			else
+				GameManager.cherry -= 3;
 		}
 		else
 		{

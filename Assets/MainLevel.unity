@@ -172,21 +172,20 @@ MonoBehaviour:
   cherry: {fileID: 1000013023180490, guid: 4395c9e576bad774498344f5cf853c9f, type: 3}
   circlePrefab: {fileID: 1000013023180490, guid: a7d65011eeae95c48aeccf48a21362af,
     type: 3}
+  resetBoost: {fileID: 1000013023180490, guid: 8f9e317928be313449798bd9857b731e, type: 3}
   shapes:
   - {fileID: 2541991215693041354, guid: a3790d6f382d73a41bfb4085d8322e39, type: 3}
   - {fileID: 5537305922058471563, guid: 3ec657c6cb219ba4090816f3af9f351b, type: 3}
   - {fileID: 4808850161732260092, guid: 91a5af55e4355f5478390548b9e78cf5, type: 3}
   - {fileID: 1402755315978054308, guid: fe0c438b5240cda4ea5388e383d0548f, type: 3}
-  - {fileID: 1000013023180490, guid: 8f9e317928be313449798bd9857b731e, type: 3}
   - {fileID: 1000013023180490, guid: c0d17f33d311a33498aecba45e3c97cd, type: 3}
   reverseShapes:
   - {fileID: 1000013023180490, guid: 4dfaa111ce3fd304199876d23ce8c910, type: 3}
   - {fileID: 1402755315978054308, guid: a280779f6d01ebb4d843b98613abdcb9, type: 3}
   - {fileID: 5537305922058471563, guid: a3b44615f2d2fcb41b0a1d93c03de02b, type: 3}
-  - {fileID: 1000013023180490, guid: f594a24fad2b97a4b95e25755759ffa2, type: 3}
   - {fileID: 2541991215693041354, guid: e915f694535a7d6408734ce9933501be, type: 3}
   - {fileID: 4808850161732260092, guid: 125104bae460dda499440be601ab4866, type: 3}
-  timeBetweenWaves: 1.5
+  timeBetweenWaves: 2
 --- !u!4 &41577873
 Transform:
   m_ObjectHideFlags: 0

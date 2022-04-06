@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 4414682359548109823}
   - component: {fileID: 1215343377250236684}
   - component: {fileID: -6573971738229450493}
-  - component: {fileID: 196337031447890833}
   - component: {fileID: 2489437069740241544}
+  - component: {fileID: -5853072666808454057}
   m_Layer: 0
   m_Name: ReverseLShape
   m_TagString: White
@@ -106,18 +106,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &196337031447890833
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5537305922058471563}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a34f2710ae9c9fa4f982bd04216df869, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!60 &2489437069740241544
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -149,3 +137,15 @@ PolygonCollider2D:
       - {x: 2.4199998, y: -8.74}
       - {x: 6.2, y: -8.74}
       - {x: 6.2, y: 8.74}
+--- !u!114 &-5853072666808454057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5537305922058471563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3842f2f7fa494d44bc7f35bd205697d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

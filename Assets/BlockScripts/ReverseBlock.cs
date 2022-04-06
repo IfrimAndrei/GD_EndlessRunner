@@ -6,7 +6,7 @@ public class ReverseBlock : MonoBehaviour {
 	private Color grayColor = new Color(0.31f, 0.31f, 0.31f, 1);
 	void Start ()
 	{
-		int x=Random.Range(2, 8);
+		int x=Random.Range(4, 8);
 		GetComponent<Rigidbody2D>().gravityScale -= Time.timeSinceLevelLoad / (x*10f);
 		int y = Random.Range(0, 3);
         if (y == 1)

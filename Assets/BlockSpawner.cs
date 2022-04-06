@@ -9,15 +9,17 @@ public class BlockSpawner : MonoBehaviour {
 
 	public GameObject cherry;
 	public GameObject circlePrefab;
+	public GameObject resetBoost;
 
 	public GameObject[] shapes;
 	public GameObject[] reverseShapes;
-	public float timeBetweenWaves = 1f;
+	public float timeBetweenWaves = 1.5f;
 
 	private float timeToSpawn = 2f;
 	public static int waveCounter = 0;
 	bool isPowerUpWave;
 	bool isScoreWave;
+	bool isResetBoostWave;
 	void Start() {
 	}
 
@@ -27,11 +29,15 @@ public class BlockSpawner : MonoBehaviour {
 		{
 			isPowerUpWave = waveCounter % 4==0;
 			isScoreWave = waveCounter % 5==0;
+			isResetBoostWave = waveCounter % 2 == 0;
 			SpawnBlocks();	
 			timeToSpawn = Time.time + timeBetweenWaves;
 			waveCounter++;
 			UI.updateScore();
-
+			if( waveCounter % 10 == 0 && timeBetweenWaves > 0.5f)
+            {
+				timeBetweenWaves -= 0.1f;
+            }				
 		}
 	}
 	
@@ -39,6 +45,7 @@ public class BlockSpawner : MonoBehaviour {
 	public void SpawnBlocks ()
 	{
 		int aux;
+		int ok = -1;
 		int randomIndexSize = Random.Range(1, spawnPoints.Length);
 		int[] randomIndex = new int[randomIndexSize];
 		int randomShapeIndex = Random.Range(0, shapes.Length);
@@ -53,16 +60,18 @@ public class BlockSpawner : MonoBehaviour {
 
 		for (int i = 0; i < spawnPoints.Length; i++)
 		{
-
-			if (randomIndex.Contains(i) == false)
+			ok = Random.Range(1, 3);
+			if (ok == 1)
 			{
-				float w = Random.Range(-50, 50) / 10;
-				Vector3 x = spawnPoints[i].position + Vector3.up * w;
-				Instantiate(shapeToSpawn, x, Quaternion.identity);
-			}
-			else
-			{
-				if(isScoreWave) {
+				if (randomIndex.Contains(i) == false)
+				{
+					float w = Random.Range(-50, 50) / 10;
+					Vector3 x = spawnPoints[i].position + Vector3.up * w;
+					int shapeVal = Random.Range(0, shapes.Length);
+					Instantiate(shapes[shapeVal], x, Quaternion.identity);
+				}
+				if (isScoreWave)
+				{
 					Instantiate(circlePrefab, spawnPoints[i].position, Quaternion.identity);
 					isScoreWave = false;
 				}
@@ -71,11 +80,33 @@ public class BlockSpawner : MonoBehaviour {
 					Instantiate(cherry, spawnPoints[i].position, Quaternion.identity);
 					isPowerUpWave = false;
 				}
-				else if (waveCounter > 2)
-					if (Random.Range(1, 4 - waveCounter / 2) == 1 || waveCounter >= 8)
-					{
-						Instantiate(reverseShapes[randomShapeIndex], reverseSpawnPoints[i].position, Quaternion.identity);
-					}
+				if (isResetBoostWave)
+                {
+					Instantiate(resetBoost, spawnPoints[i].position, Quaternion.identity);
+					isResetBoostWave = false;
+				}
+			}
+			else
+			{
+				if (isScoreWave)
+				{
+					Instantiate(circlePrefab, reverseSpawnPoints[i].position, Quaternion.identity);
+					isScoreWave = false;
+				}
+				if (isPowerUpWave)
+				{
+					Instantiate(cherry, reverseSpawnPoints[i].position, Quaternion.identity);
+					isPowerUpWave = false;
+				}
+				if (isResetBoostWave)
+				{
+					Instantiate(resetBoost, reverseSpawnPoints[i].position, Quaternion.identity);
+					isResetBoostWave = false;
+				}
+				float w2 = Random.Range(-50, 50) / 10;
+				Vector3 x2 = reverseSpawnPoints[i].position + Vector3.up * w2;
+				int randomVal = Random.Range(0, reverseShapes.Length);
+				Instantiate(reverseShapes[randomVal], x2, Quaternion.identity);
 			}
 		}
 		
