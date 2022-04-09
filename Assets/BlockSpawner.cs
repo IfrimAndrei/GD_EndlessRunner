@@ -82,7 +82,7 @@ public class BlockSpawner : MonoBehaviour {
 				}
 				if (isResetBoostWave)
                 {
-					Instantiate(resetBoost, spawnPoints[i].position, Quaternion.identity);
+					//Instantiate(resetBoost, spawnPoints[i].position, Quaternion.identity);
 					isResetBoostWave = false;
 				}
 			}
@@ -100,7 +100,7 @@ public class BlockSpawner : MonoBehaviour {
 				}
 				if (isResetBoostWave)
 				{
-					Instantiate(resetBoost, reverseSpawnPoints[i].position, Quaternion.identity);
+					//Instantiate(resetBoost, reverseSpawnPoints[i].position, Quaternion.identity);
 					isResetBoostWave = false;
 				}
 				float w2 = Random.Range(-50, 50) / 10;

@@ -30,11 +30,21 @@ public class Player : MonoBehaviour {
 			GameManager.cherry++;
 			Destroy(col.gameObject);
 		}
-		else if ((col.gameObject.tag == "White" && this.tag== "P_White") ||
-			(col.gameObject.tag == "Black" && this.tag == "P_Black"))
+		else if (col.gameObject.tag == "White" && this.tag== "P_White")
 		{
 			//Physics2D.IgnoreCollision(col.collider, this.gameObject.GetComponent<Collider2D>());
 			col.rigidbody.gravityScale *= -1;
+
+			var thisRender = col.gameObject.GetComponent<SpriteRenderer>();
+			thisRender.color = new Color(0, 0, 0, 1);
+			col.gameObject.tag = "Black";
+		}
+		else if (col.gameObject.tag == "Black" && this.tag == "P_Black"){
+			col.rigidbody.gravityScale *= -1;
+
+			var thisRender = col.gameObject.GetComponent<SpriteRenderer>();
+			thisRender.color = new Color(255, 255, 255, 1);
+			col.gameObject.tag = "White";
 		}
 		else if(col.gameObject.tag == "Score") {
 			Destroy(col.gameObject);

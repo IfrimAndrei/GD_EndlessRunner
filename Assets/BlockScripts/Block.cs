@@ -10,7 +10,7 @@ public class Block : MonoBehaviour
 
         int x = Random.Range(4, 8);
         GetComponent<Rigidbody2D>().gravityScale += Time.timeSinceLevelLoad / (x * 10f);
-        int y = Random.Range(0, 3);
+        int y = Random.Range(0, 2);
         if (y == 1)
         {
             this.tag = "White";

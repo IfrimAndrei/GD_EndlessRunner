@@ -18,11 +18,13 @@ public class GameManager : MonoBehaviour {
     {
 		sloweDeltaT= Time.fixedDeltaTime / slowness;
 		normalDeltaT = Time.fixedDeltaTime;
+	
 	}
 
     private void Update()
 	{
-		if(cherry>0)
+		Cursor.visible = false;
+		if (cherry>0)
 			if (Input.GetMouseButtonDown(0))
 			{
 				StartCoroutine(SlowMotion(true));
