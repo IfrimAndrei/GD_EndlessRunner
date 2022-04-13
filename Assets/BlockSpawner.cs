@@ -36,7 +36,7 @@ public class BlockSpawner : MonoBehaviour {
 			UI.updateScore();
 			if( waveCounter % 10 == 0 && timeBetweenWaves > 0.5f)
             {
-				timeBetweenWaves -= 0.1f;
+				timeBetweenWaves -= 0.15f;
             }				
 		}
 	}

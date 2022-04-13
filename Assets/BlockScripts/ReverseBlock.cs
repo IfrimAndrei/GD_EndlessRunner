@@ -34,7 +34,7 @@ public class ReverseBlock : MonoBehaviour {
 	}
 	void OnCollisionEnter2D(Collision2D col)
 	{
-		if(this.tag=="Gray" && ( (col.gameObject.tag == "White") || (col.gameObject.tag == "Black")))
+		if (this.tag=="Gray" && ( (col.gameObject.tag == "White") || (col.gameObject.tag == "Black")))
         {
             var thisRender = col.gameObject.GetComponent<SpriteRenderer>();
             thisRender.color = grayColor;
