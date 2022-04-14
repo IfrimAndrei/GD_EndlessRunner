@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8779920215578882171}
   - component: {fileID: 3255287934159051054}
   - component: {fileID: 4358131251104266663}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ReverseCube
   m_TagString: Black
   m_Icon: {fileID: 0}

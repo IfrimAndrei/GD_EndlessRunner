@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 50000011206490344}
   - component: {fileID: 61000012136095630}
   - component: {fileID: -5333817804813672532}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ReverseBlock
   m_TagString: Black
   m_Icon: {fileID: 0}

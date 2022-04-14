@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -8262053819650158487}
   - component: {fileID: 8699947553719990720}
   - component: {fileID: 9034649528676230983}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ReverseUShape
   m_TagString: White
   m_Icon: {fileID: 0}

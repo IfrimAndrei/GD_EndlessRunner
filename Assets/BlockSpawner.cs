@@ -57,7 +57,7 @@ public class BlockSpawner : MonoBehaviour {
 				aux = Random.Range(1, spawnPoints.Length);
 			randomIndex[i] = aux;
 		}
-
+		int randomVal = 0;
 		for (int i = 0; i < spawnPoints.Length; i++)
 		{
 			ok = Random.Range(1, 3);
@@ -72,17 +72,20 @@ public class BlockSpawner : MonoBehaviour {
 				}
 				if (isScoreWave)
 				{
-					Instantiate(circlePrefab, spawnPoints[i].position, Quaternion.identity);
+					randomVal = Random.Range(0, shapes.Length);
+					Instantiate(circlePrefab, spawnPoints[randomVal].position, Quaternion.identity);
 					isScoreWave = false;
 				}
 				if (isPowerUpWave)
 				{
-					Instantiate(cherry, spawnPoints[i].position, Quaternion.identity);
+					randomVal = Random.Range(0, shapes.Length);
+					Instantiate(cherry, spawnPoints[randomVal].position, Quaternion.identity);
 					isPowerUpWave = false;
 				}
 				if (isResetBoostWave)
                 {
-					//Instantiate(resetBoost, spawnPoints[i].position, Quaternion.identity);
+					randomVal = Random.Range(0, shapes.Length);
+					Instantiate(resetBoost, spawnPoints[randomVal].position, Quaternion.identity);
 					isResetBoostWave = false;
 				}
 			}
@@ -90,22 +93,25 @@ public class BlockSpawner : MonoBehaviour {
 			{
 				if (isScoreWave)
 				{
-					Instantiate(circlePrefab, reverseSpawnPoints[i].position, Quaternion.identity);
+					randomVal = Random.Range(0, reverseShapes.Length);
+					Instantiate(circlePrefab, reverseSpawnPoints[randomVal].position, Quaternion.identity);
 					isScoreWave = false;
 				}
 				if (isPowerUpWave)
 				{
-					Instantiate(cherry, reverseSpawnPoints[i].position, Quaternion.identity);
+					randomVal = Random.Range(0, reverseShapes.Length);
+					Instantiate(cherry, reverseSpawnPoints[randomVal].position, Quaternion.identity);
 					isPowerUpWave = false;
 				}
 				if (isResetBoostWave)
 				{
-					//Instantiate(resetBoost, reverseSpawnPoints[i].position, Quaternion.identity);
+					randomVal = Random.Range(0, reverseShapes.Length);
+					Instantiate(resetBoost, reverseSpawnPoints[randomVal].position, Quaternion.identity);
 					isResetBoostWave = false;
 				}
 				float w2 = Random.Range(-50, 50) / 10;
 				Vector3 x2 = reverseSpawnPoints[i].position + Vector3.up * w2;
-				int randomVal = Random.Range(0, reverseShapes.Length);
+				randomVal = Random.Range(0, reverseShapes.Length);
 				Instantiate(reverseShapes[randomVal], x2, Quaternion.identity);
 			}
 		}

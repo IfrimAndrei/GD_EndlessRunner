@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2166682099853551556}
   - component: {fileID: -373941024732847080}
   - component: {fileID: -3524713419349421758}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TShape
   m_TagString: White
   m_Icon: {fileID: 0}
