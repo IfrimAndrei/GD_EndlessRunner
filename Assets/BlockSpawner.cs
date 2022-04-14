@@ -91,6 +91,7 @@ public class BlockSpawner : MonoBehaviour {
 			}
 			else
 			{
+				/*
 				if (isScoreWave)
 				{
 					randomVal = Random.Range(0, reverseShapes.Length);
@@ -103,6 +104,7 @@ public class BlockSpawner : MonoBehaviour {
 					Instantiate(cherry, reverseSpawnPoints[randomVal].position, Quaternion.identity);
 					isPowerUpWave = false;
 				}
+				*/
 				if (isResetBoostWave)
 				{
 					randomVal = Random.Range(0, reverseShapes.Length);

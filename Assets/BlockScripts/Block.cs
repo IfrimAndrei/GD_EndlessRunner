@@ -10,14 +10,14 @@ public class Block : MonoBehaviour
 
         int x = Random.Range(4, 8);
         GetComponent<Rigidbody2D>().gravityScale += Time.timeSinceLevelLoad / (x * 10f);
-        int y = Random.Range(0, 3);
-        if (y == 1)
+        int y = Random.Range(0, 5);
+        if (y % 2 == 1 && y <= 3)
         {
             this.tag = "White";
             var thisRender = this.GetComponent<SpriteRenderer>();
             thisRender.color = new Color(1, 1, 1, 1);
         }
-        else if (y == 2)
+        else if (y == 4)
         {
             this.tag = "Gray";
             var thisRender = this.GetComponent<SpriteRenderer>();
