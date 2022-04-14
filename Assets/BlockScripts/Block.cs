@@ -17,11 +17,17 @@ public class Block : MonoBehaviour
             var thisRender = this.GetComponent<SpriteRenderer>();
             thisRender.color = new Color(1, 1, 1, 1);
         }
-        if (y == 2)
+        else if (y == 2)
         {
             this.tag = "Gray";
             var thisRender = this.GetComponent<SpriteRenderer>();
             thisRender.color = grayColor;
+        }
+        else
+        {
+            this.tag = "Black";
+            var thisRender = this.GetComponent<SpriteRenderer>();
+            thisRender.color = new Color(0, 0, 0, 1);
         }
     }
 

@@ -8,14 +8,14 @@ public class ReverseBlock : MonoBehaviour {
 	{
 		int x=Random.Range(4, 8);
 		GetComponent<Rigidbody2D>().gravityScale -= Time.timeSinceLevelLoad / (x*10f);
-		int y = Random.Range(0, 2);
+		int y = Random.Range(0, 3);
         if (y == 1)
         {
             this.tag = "White";
             var thisRender = this.GetComponent<SpriteRenderer>();
             thisRender.color = new Color(255, 255, 255, 1);
         }
-        if (y == 2)
+        else if (y == 2)
         {
             this.tag = "Gray";
             var thisRender = this.GetComponent<SpriteRenderer>();
@@ -23,6 +23,12 @@ public class ReverseBlock : MonoBehaviour {
 
 
         }
+        else
+        {
+			this.tag = "Black";
+			var thisRender = this.GetComponent<SpriteRenderer>();
+			thisRender.color = new Color(0, 0, 0, 1);
+		}
 	}
 
 	// Update is called once per frame
