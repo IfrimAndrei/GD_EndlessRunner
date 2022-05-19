@@ -6,19 +6,28 @@ using UnityEngine.UI;
 public class AudioBetweenScenes : MonoBehaviour
 {
     AudioSource audioSource;
-    public Slider volumeSlider;
-    // Start is called before the first frame update
-    // void Awake() {
-        // DontDestroyOnLoad(transform.gameObject);
-    // }
-
-    void Start() {
-        DontDestroyOnLoad(transform.gameObject);
-
+    private static AudioBetweenScenes instance = null;
+    public static AudioBetweenScenes Instance
+    {
+        get { return instance; }
+    }
+    void Awake()
+    {
         audioSource = GetComponent<AudioSource>();
-        if(PlayerPrefs.HasKey("musicVolume")){
-        audioSource.volume = PlayerPrefs.GetFloat("musicVolume");
+        if (PlayerPrefs.HasKey("musicVolume"))
+        {
+            audioSource.volume = PlayerPrefs.GetFloat("musicVolume");
         }
 
+        if (instance != null && instance != this)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
+        else
+        {
+            instance = this;
+        }
+        DontDestroyOnLoad(this.gameObject);
     }
 }
