@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     }
     public void Start()
     {
+
+        Cursor.visible = false;
         sloweDeltaT = Time.fixedDeltaTime / slowness;
         normalDeltaT = Time.fixedDeltaTime;
 
@@ -24,7 +26,6 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        Cursor.visible = false;
         if (cherry > 0)
             if (Input.GetMouseButtonDown(0))
             {
