@@ -32,9 +32,9 @@ public class BlockSpawner : MonoBehaviour {
 			isPowerUpWave = waveCounter % 4==0;
 			isScoreWave = waveCounter % 5==0;
 			isResetBoostWave = waveCounter % 2 == 0;
-			if (waveCounter % 10 == 0 && waveCounter % 20 != 0 && numberOfFreeShapes > 1)
+			if (waveCounter % 10 == 0 && waveCounter % 15 != 0 && numberOfFreeShapes > 1)
 				numberOfFreeShapes -= 1;
-			if (waveCounter % 20 == 0 && numberOfFreeReverseShapes > 1)
+			if (waveCounter % 15 == 0 && numberOfFreeReverseShapes > 1)
 				numberOfFreeReverseShapes -= 1;
 			SpawnBlocks(numberOfFreeShapes,numberOfFreeReverseShapes);	
 			timeToSpawn = Time.time + timeBetweenWaves;

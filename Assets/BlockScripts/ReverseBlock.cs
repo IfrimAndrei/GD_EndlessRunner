@@ -7,7 +7,10 @@ public class ReverseBlock : MonoBehaviour {
 	void Start ()
 	{
 		int x=Random.Range(4, 8);
-		GetComponent<Rigidbody2D>().gravityScale -= Time.timeSinceLevelLoad / (x*10f);
+		float speed = Time.timeSinceLevelLoad / (x * 20f);
+		if (speed < -1f)
+			speed = -1f;
+		GetComponent<Rigidbody2D>().gravityScale -= speed;
 		int y = Random.Range(0, 5);
         if (y % 2 == 1 && y <= 3)
         {

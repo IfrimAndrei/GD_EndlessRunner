@@ -6,8 +6,11 @@ public class Cherry : MonoBehaviour
 
 	void Start()
 	{
-		int x = Random.Range(6, 8);
-		GetComponent<Rigidbody2D>().gravityScale += Time.timeSinceLevelLoad / (x * 10f);
+		int x = Random.Range(4, 8);
+		float speed = Time.timeSinceLevelLoad / (x * 20f);
+		if (speed > 0.7f)
+			speed = 0.7f;
+		GetComponent<Rigidbody2D>().gravityScale += speed;
 	}
 
 	// Update is called once per frame
