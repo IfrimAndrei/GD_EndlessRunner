@@ -17,8 +17,8 @@ public class BlockSpawner : MonoBehaviour {
 
 	private float timeToSpawn = 2f;
 	public static int waveCounter = 0;
-	private int numberOfFreeShapes = 4;
-	private int numberOfFreeReverseShapes = 4;
+	private int numberOfFreeShapes = 3;
+	private int numberOfFreeReverseShapes = 3;
 	bool isPowerUpWave;
 	bool isScoreWave;
 	bool isResetBoostWave;
@@ -29,13 +29,14 @@ public class BlockSpawner : MonoBehaviour {
 
 		if (Time.time >= timeToSpawn)
 		{
-			isPowerUpWave = waveCounter % 4==0;
-			isScoreWave = waveCounter % 5==0;
+			isPowerUpWave = waveCounter % 4 == 0;
+			isScoreWave = waveCounter % 5 == 0;
 			isResetBoostWave = waveCounter % 2 == 0;
-			if (waveCounter % 10 == 0 && waveCounter % 15 != 0 && numberOfFreeShapes > 1)
+			if (waveCounter % 10 == 0 && numberOfFreeShapes > 1)
+			{
 				numberOfFreeShapes -= 1;
-			if (waveCounter % 15 == 0 && numberOfFreeReverseShapes > 1)
 				numberOfFreeReverseShapes -= 1;
+			}
 			SpawnBlocks(numberOfFreeShapes,numberOfFreeReverseShapes);	
 			timeToSpawn = Time.time + timeBetweenWaves;
 			waveCounter++;
