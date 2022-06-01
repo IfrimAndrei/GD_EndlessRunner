@@ -13,10 +13,12 @@ public class BlockSpawner : MonoBehaviour {
 
 	public GameObject[] shapes;
 	public GameObject[] reverseShapes;
-	public float timeBetweenWaves = 1.5f;
+	public float timeBetweenWaves = 2.0f;
 
 	private float timeToSpawn = 2f;
 	public static int waveCounter = 0;
+	private int numberOfFreeShapes = 4;
+	private int numberOfFreeReverseShapes = 4;
 	bool isPowerUpWave;
 	bool isScoreWave;
 	bool isResetBoostWave;
@@ -30,33 +32,47 @@ public class BlockSpawner : MonoBehaviour {
 			isPowerUpWave = waveCounter % 4==0;
 			isScoreWave = waveCounter % 5==0;
 			isResetBoostWave = waveCounter % 2 == 0;
-			SpawnBlocks();	
+			if (waveCounter % 10 == 0 && waveCounter % 20 != 0 && numberOfFreeShapes > 1)
+				numberOfFreeShapes -= 1;
+			if (waveCounter % 20 == 0 && numberOfFreeReverseShapes > 1)
+				numberOfFreeReverseShapes -= 1;
+			SpawnBlocks(numberOfFreeShapes,numberOfFreeReverseShapes);	
 			timeToSpawn = Time.time + timeBetweenWaves;
 			waveCounter++;
 			UI.updateScore();
 			if( waveCounter % 10 == 0 && timeBetweenWaves > 0.5f)
             {
-				timeBetweenWaves -= 0.15f;
+				timeBetweenWaves -= 0.1f;
             }				
 		}
 	}
 	
 
-	public void SpawnBlocks ()
+	public void SpawnBlocks (int indexSize, int reverseIndexSize)
 	{
 		int aux;
 		int ok = -1;
 		int randomIndexSize = Random.Range(1, spawnPoints.Length);
-		int[] randomIndex = new int[randomIndexSize];
+		int[] randomIndex = new int[indexSize];
+		int[] reverseRandomIndex = new int[reverseIndexSize];
 		int randomShapeIndex = Random.Range(0, shapes.Length);
 		GameObject shapeToSpawn = shapes[randomShapeIndex]; 
-		for (int i = 0; i < randomIndexSize; i++) 
+		for (int i = 0; i < indexSize; i++) 
 		{
 			aux = Random.Range(1, spawnPoints.Length);
 			while(randomIndex.Contains(aux))
 				aux = Random.Range(1, spawnPoints.Length);
 			randomIndex[i] = aux;
 		}
+
+		for (int i = 0; i < reverseIndexSize; i++)
+		{
+			aux = Random.Range(1, reverseSpawnPoints.Length);
+			while (reverseRandomIndex.Contains(aux))
+				aux = Random.Range(1, reverseSpawnPoints.Length);
+			reverseRandomIndex[i] = aux;
+		}
+
 		int randomVal = 0;
 		for (int i = 0; i < spawnPoints.Length; i++)
 		{
@@ -91,30 +107,20 @@ public class BlockSpawner : MonoBehaviour {
 			}
 			else
 			{
-				/*
-				if (isScoreWave)
-				{
-					randomVal = Random.Range(0, reverseShapes.Length);
-					Instantiate(circlePrefab, reverseSpawnPoints[randomVal].position, Quaternion.identity);
-					isScoreWave = false;
-				}
-				if (isPowerUpWave)
-				{
-					randomVal = Random.Range(0, reverseShapes.Length);
-					Instantiate(cherry, reverseSpawnPoints[randomVal].position, Quaternion.identity);
-					isPowerUpWave = false;
-				}
-				*/
 				if (isResetBoostWave)
 				{
 					randomVal = Random.Range(0, reverseShapes.Length);
 					Instantiate(resetBoost, reverseSpawnPoints[randomVal].position, Quaternion.identity);
 					isResetBoostWave = false;
 				}
-				float w2 = Random.Range(-50, 50) / 10;
-				Vector3 x2 = reverseSpawnPoints[i].position + Vector3.up * w2;
-				randomVal = Random.Range(0, reverseShapes.Length);
-				Instantiate(reverseShapes[randomVal], x2, Quaternion.identity);
+				if (reverseRandomIndex.Contains(i) == false)
+				{
+					float w2 = Random.Range(-50, 50) / 10;
+					Vector3 x2 = reverseSpawnPoints[i].position + Vector3.up * w2;
+					randomVal = Random.Range(0, reverseShapes.Length);
+					Instantiate(reverseShapes[randomVal], x2, Quaternion.identity);
+				}
+				
 			}
 		}
 		
