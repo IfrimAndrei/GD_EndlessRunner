@@ -185,7 +185,7 @@ MonoBehaviour:
   - {fileID: 5537305922058471563, guid: a3b44615f2d2fcb41b0a1d93c03de02b, type: 3}
   - {fileID: 2541991215693041354, guid: e915f694535a7d6408734ce9933501be, type: 3}
   - {fileID: 4808850161732260092, guid: 125104bae460dda499440be601ab4866, type: 3}
-  timeBetweenWaves: 1.2
+  timeBetweenWaves: 2.5
 --- !u!4 &41577873
 Transform:
   m_ObjectHideFlags: 0

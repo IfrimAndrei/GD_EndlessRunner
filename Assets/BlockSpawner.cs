@@ -13,7 +13,7 @@ public class BlockSpawner : MonoBehaviour {
 
 	public GameObject[] shapes;
 	public GameObject[] reverseShapes;
-	public float timeBetweenWaves = 2.0f;
+	public float timeBetweenWaves;
 
 	private float timeToSpawn = 2f;
 	public static int waveCounter = 0;
@@ -42,8 +42,8 @@ public class BlockSpawner : MonoBehaviour {
 			UI.updateScore();
 			if( waveCounter % 10 == 0 && timeBetweenWaves > 0.5f)
             {
-				timeBetweenWaves -= 0.1f;
-            }				
+				timeBetweenWaves -= 0.2f;
+            }
 		}
 	}
 	
